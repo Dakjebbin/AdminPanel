@@ -1,0 +1,193 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.login-container{
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    
+    padding-left: 40px;
+}
+
+.login-grid-1{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.forgot{
+    font-family:"Playfair Display", serif;
+font-size: 16px;
+font-weight: 700;
+line-height: 21.33px;
+}
+
+.checkbox{
+  text-align: center;
+}
+
+.eye-button {
+    background: transparent;
+    
+    border: none;
+    cursor: pointer;
+    margin-left: -30px; /* Adjust as needed */
+    outline: none;
+   
+  }
+  
+  .eye-button img {
+    width: 20px; /* Adjust size as needed */
+    height: auto;
+    fill: black;
+  }
+
+  .password-container {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .password-input {
+    display: flex;
+    align-items: center;
+  } 
+
+  .password-input-box{
+    width: 300px;  /* Takes full width of its container */
+    padding: 10px 15px;
+    border: 5px;
+    border-radius: 30px;
+    background-color: #f7f3f3ad;
+    outline: none;
+    font-size: 18px;
+    border: 5px solid #ECE8E8AD
+  }
+
+  .gmail{
+    width: 300px;  /* Takes full width of its container */
+    padding: 10px 15px;
+    border: 5px;
+    border-radius: 30px;
+    background-color: #f7f3f3ad;
+    outline: none;
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-family: "Playfair Display", serif;
+    border: 5px solid #ECE8E8AD;
+    cursor: pointer;
+  }
+
+  .links-forgot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .welcome{
+    color: #FE0000;
+    text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 42.66px;
+  padding-bottom: 60px;
+  }
+
+  .welcome-2{
+    font-family: "Playfair Display", serif;
+font-size: 16px;
+font-weight: 700;
+line-height: 21.33px;
+text-align: center;
+padding-bottom: 30px;
+
+  }
+
+  .email-container{
+    position: relative;
+    width: 300px;
+  }
+
+  .absolut{
+    position: absolute;
+    top: 11px;
+    right: 10px;
+    
+  }
+
+  .line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    margin-bottom: 30px;
+  }
+  
+  .line {
+    flex: 1;
+    border: none;
+    border-top: 2px solid #000;
+    margin: 0 10px;
+  }
+  
+  .or-text {
+    font-family: Playfair Display;
+font-size: 24px;
+font-weight: 400;
+line-height: 31.99px;
+
+  }
+
+  .password-input-box::placeholder{
+    font-family: "Playfair Display", serif;
+font-size: 18px;
+font-weight: 400;
+line-height: 31.99px;
+text-align: left;
+  }
+
+.loginImage{
+    height: 550px;       
+    object-fit: contain;
+    border-radius: 30px;
+}
+
+
+.login-button{
+    width: 300px;  
+    padding: 10px 15px;
+    border: 5px;
+    border-radius: 30px;
+    background: #FE0000;
+    outline: none;
+    cursor: pointer;
+    margin-top: 30px;
+    font-family: "Playfair Display", serif;
+    border: 5px solid #ECE8E8AD;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31.99px;
+    color: #FFFFFF;
+}
+
+.spiner-button{
+  position: relative;
+  
+}
+.image-login {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20px; */
+  padding: 20px;
+}
+
+@media (max-width:768px) {
+  .image-login{
+    display: none;
+  }
+}

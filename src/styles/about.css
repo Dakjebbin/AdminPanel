@@ -1,0 +1,98 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 20px;
+  
+  }
+
+  .hero-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    /* border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+    flex-direction: row; /* Default to row direction */
+  }
+
+  .description {
+    flex: 1;
+    padding: 20px;
+    max-width: 600px; /* Limiting the width of the description */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .description-2{
+    flex: 1;
+    padding: 20px;
+    max-width: 600px; /* Limiting the width of the description */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+
+  .description p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: left;
+    font-family: "Inter";
+    font-weight: 400;
+  }
+  
+  
+  .description-2 p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: left;
+    font-family: "Inter";
+  }
+
+.expert p{
+  font-family: "Inter";
+}
+
+.expert{
+  transition: transform 0.8s ease;
+}
+
+.my-text{
+  font-family: Playfair Display;
+line-height: 25.33px;
+letter-spacing: 0.05em;
+}
+
+.expert:hover{
+    transform: translateY(-10px);
+}
+
+  .image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 20px; */
+    padding: 20px;
+  }
+
+  .image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: rounding the image corners */
+  }
+
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .hero-container {
+      flex-direction: column; /* Switch to column direction on smaller screens */
+    }
+  }
+
+  /* hero section styling end */
