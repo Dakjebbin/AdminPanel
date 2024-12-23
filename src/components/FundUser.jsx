@@ -2,21 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import { assets } from "../assets/assest";
 import { useAuthContext } from "../context/auth-context";
 import { MdDashboard } from "react-icons/md";
-// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaSpinner } from "react-icons/fa";
 import axios from "axios";
 import { MdOutlineMenuOpen } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
-import AdminDash from "./AdminDash";
+import { useParams } from "react-router-dom";
 
-const Sidebar = () => {
+
+const FundUser = () => {
   axios.defaults.withCredentials = true;
   const { userData } = useAuthContext();
   const [open, setOpen] = useState(true);
   const [loggingOut, setLoggingOut] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { Id } = useParams();
 
   const baseUrl = import.meta.env.VITE_BASEURL;
 
@@ -69,29 +70,6 @@ const Sidebar = () => {
       label: "Dashboard",
       url: "/admin-dashboard",
     },
-    // {
-    //   icons: <FaBook size={30} />,
-    //   label: "Course",
-    //   url: "/courses",
-    // },
-    // {
-    //   icons: <IoMdWallet size={30}/>,
-    //   label: "Withdrawal",
-    //   url: "/Withdraw"
-    // },
-    // {
-    //   icons: <PiHandDepositBold size={30}/>,
-    //   label: "Deposit",
-    //   url: "/courses",
-    // },
-    // {
-    //   icons: <FaSignal size={30}/>,
-    //   label: "Signal",
-    //   url: "/signal",
-    // },{
-    //   icons: <IoIosContact size={30} />,
-    //   label: "KYC",
-    // },
   ];
 
   const [isNavActive, setIsNavActive] = useState(false);
@@ -261,7 +239,10 @@ const Sidebar = () => {
           <div
             className={`flex-1 p-5 overflow-auto  md:max-h-screen transition-all duration-500 ${open ? "ml-4" : "ml-5"}`}
           >
-           <AdminDash/>
+          <div>
+            <h1>Fund User</h1>
+            <p>This is the Fund User page.</p>
+          </div>
           </div>
         </>
       )}
@@ -271,4 +252,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default FundUser;

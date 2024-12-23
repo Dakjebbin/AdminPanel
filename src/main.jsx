@@ -12,6 +12,7 @@ import ForgotPassword from './auth/ForgotPass.jsx';
 // import Login from './auth/Login.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import UserDetails from './components/UserDetails.jsx';
+import FundUser from './components/FundUser.jsx';
 
 const router = createBrowserRouter([
 {
@@ -31,6 +32,9 @@ const router = createBrowserRouter([
         {
           path:"/admin-dashboard/user/:Id",
           element: <UserDetails/>
+        },{
+          path:"/admin-dashboard/Fund/:Id",
+          element: <FundUser/>
         }
   ]
 }

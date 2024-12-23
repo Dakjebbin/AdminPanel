@@ -80,7 +80,9 @@ const AdminDash = () => {
                                 className="bg-[#FE918C] px-6 py-3 rounded-xl font-playfair font-semibold"
                                 onClick={() => navigate(`user/${user._id}`)}>
                                     More Info</button>
-                                <button className="bg-[#14AE5C] px-6 py-3 rounded-xl font-playfair font-semibold">Transactions</button>
+                                <button 
+                                onClick={() => navigate(`Fund/${user._id}`)}
+                                className="bg-[#14AE5C] px-6 py-3 rounded-xl font-playfair font-semibold">Transactions</button>
                             </span>
                         </div>
                     ))}

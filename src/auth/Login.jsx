@@ -56,7 +56,7 @@ const Login = () => {
       if (error.response) {
         // Handle specific error codes
         if (error.response.status === 404) {
-          toast.error('Email or Password is incorrect');
+          toast.error('Email or Password is incorrect or User Details Not Found');
         } else if (error.response.status === 409) {
           toast.error('Account issues or incorrect credentials');
         } else if (error.response.status === 401) {
