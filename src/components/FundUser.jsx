@@ -9,6 +9,7 @@ import axios from "axios";
 import { MdOutlineMenuOpen } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
 import { useParams } from "react-router-dom";
+import { RxAvatar } from "react-icons/rx";
 
 
 const FundUser = () => {
@@ -18,8 +19,37 @@ const FundUser = () => {
   const [loggingOut, setLoggingOut] = useState(false);
   const [loading, setLoading] = useState(true);
   const { Id } = useParams();
+  const [amount, setAmount] = useState(0)
+  const [plan, setPlan] = useState('DBA')
 
   const baseUrl = import.meta.env.VITE_BASEURL;
+
+
+  const handleFundingRequest = async (e) => {
+      e.preventDefault()
+
+    try {
+      const response = await axios.post(`${baseUrl}/userFund/fund/${Id}`,{
+        amount,plan
+      },{
+          withCredentials: true
+      });
+
+      if (response.status === 200) {
+        toast.success("Funding request sent successfully");
+        // setAmount(0)
+        // setPlan('')
+      }
+  
+    } catch (error) {
+      if (error instanceof axios.AxiosError) {
+        toast.error(error?.response?.data);
+    } else {
+        toast.error("Error fetching users: ", error.message);
+    }
+    }
+    
+  }
 
   
   useEffect(() => {
@@ -140,10 +170,7 @@ const FundUser = () => {
             {/* Footer */}
             <div className="flex items-center gap-2 px-3 py-2">
               <div>
-                {/* <Avatar>
-                  <AvatarImage src="https://github.com/shadcn.png" />
-                  <AvatarFallback>WW</AvatarFallback>
-                </Avatar> */}
+            
               </div>
               <div className={`leading-5 ${!open && `w-0 translate-x-24`} duration-500 overflow-hidden`}>
                 <p className="flex items-center mr-3">{userData?.username}</p>
@@ -240,8 +267,59 @@ const FundUser = () => {
             className={`flex-1 p-5 overflow-auto  md:max-h-screen transition-all duration-500 ${open ? "ml-4" : "ml-5"}`}
           >
           <div>
-            <h1>Fund User</h1>
-            <p>This is the Fund User page.</p>
+          <div className="flex items-center justify-center m-10">
+            <RxAvatar size={69} />
+            </div>
+
+            <h1 className="font-bold text-2xl text-center font-playfair">Fund User</h1>
+
+<form onSubmit={handleFundingRequest}>
+          <div className="font-semibold text-xl mb-2 mt-9">Plan</div>
+            <select name="" value={plan}
+            onChange={(e) => setPlan(e.target.value)}
+            id="" className="border-black border-2 w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]">
+              <option value="DBA">DBA</option>
+              <option value="UBC">UBC</option>
+              <option value="Legacy Builders">Legacy Builders</option>
+              <option value="Click Bank">Click Bank</option>
+              <option value="Amazon">Amazon</option>
+            </select>
+
+            <div className="font-semibold text-xl mb-2 mt-9">Amount</div>
+            <div>
+              <input className="border-2 w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]"
+              placeholder="$"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              type="number" name="" id="" />
+            </div>
+
+                  <div className="mt-7 ml-10">
+            <button 
+            className="bg-[#FFBBB8] px-8 py-2 rounded-lg font-semibold"
+            type="submit">Submit</button>
+            </div>
+            </form>
+
+            <div className="mt-10">
+            <h1 className="font-bold text-2xl text-center font-playfair">Add Profit</h1>
+
+            <div className="font-semibold text-xl mb-2 mt-9">Amount</div>
+            <form>
+            <div>
+              <input className="border-2 w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]"
+              placeholder="$"
+              type="number" name="" id="" />
+            </div>
+
+            
+            <div className="mt-7 ml-10">
+            <button 
+            className="bg-[#FFBBB8] px-8 py-2 rounded-lg font-semibold"
+            type="submit">Submit</button>
+            </div>
+            </form>
+            </div>
           </div>
           </div>
         </>

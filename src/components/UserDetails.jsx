@@ -343,7 +343,8 @@ if (!userDetails) {
                 <p>Status: - {userDetails.status}</p>
                 <p>IsApproved: - {userDetails.isApproved}</p>
                 {/* I'd correct you later */}
-                <p>Balance: - ${userDetails.profit}</p>
+                <p>Balance: - ${userDetails.balance}</p>
+                <p>Profit: - ${userDetails.profit}</p>
             </div>
 
             <div className="flex justify-between ml-6 mr-8 mt-10">
@@ -368,7 +369,6 @@ if (!userDetails) {
 
              
                 <div>
-                  
                 <select value={status}
                  id=""
                  onChange={(e) => setStatus(e.target.value)}
@@ -384,6 +384,19 @@ if (!userDetails) {
            
            
             </div>
+        </div>
+
+        <div className="mt-14">
+          <p className="text-center font-playfair text-xl font-semibold">Transaction History</p>
+
+          <div className="bg-[#FFE6E4] mt-9">
+            <ol className="flex justify-between mx-2 sm:mx-9 font-playfair">
+              <li>Date</li>
+              <li>Plan</li>
+              <li>Amount</li>
+              <li>Type</li>
+            </ol>
+          </div>
         </div>
           </div>
         </>
