@@ -22,6 +22,7 @@ const UserDetails = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [isApproved, setIsApproved] = useState("Approved")
   const [status, setStatus] = useState("active")
+  const [transaction, setTransaction] = useState([])
 
   const baseUrl = import.meta.env.VITE_BASEURL;
 
@@ -85,6 +86,31 @@ const UserDetails = () => {
     }
   }
 
+  useEffect(() => {
+  const fetchTransaction = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/transactions/get-transactionAdmin/${Id}`,{
+          withCredentials:true
+        })
+
+        setTransaction(response.data.data)
+        console.log(transaction);
+        
+        
+      } catch (error) {
+        if (error instanceof axios.AxiosError) {
+          toast.error(error?.response?.data);
+      } else {
+          toast.error("Error fetching users: ", error.message);
+      }
+      }
+  }
+
+  fetchTransaction();
+  
+  },[Id])
+
+
 
     const fetchUserDetails = async () => {
         try {
@@ -105,8 +131,6 @@ const UserDetails = () => {
     },
  [Id, baseUrl]);
 
-
-
   useEffect(() => {
     // Ensure that userData exists and we can safely check for isAdmin
     if (userData !== null) {
@@ -119,6 +143,7 @@ const UserDetails = () => {
         }
     }
 }, [userData]); 
+
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -189,6 +214,15 @@ const UserDetails = () => {
 if (!userDetails) {
     return <div>User not found!</div>;
 }
+
+const formatDate = (timestamp) => {
+  const date = new Date(timestamp);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+};
   return (
     <div className="md:flex">
       {userData && (
@@ -392,10 +426,27 @@ if (!userDetails) {
           <div className="bg-[#FFE6E4] mt-9">
             <ol className="flex justify-between mx-2 sm:mx-9 font-playfair">
               <li>Date</li>
-              <li>Plan</li>
+              <li>Status</li>
               <li>Amount</li>
               <li>Type</li>
             </ol>
+          </div>
+
+          <div>
+            {transaction.length === 0 ? (
+              <p>No Transaction Available</p>
+            ) : (
+              <div>
+                {transaction.map((transactions, index) => (
+                  <div key={index} className="flex justify-between mt-3 mx-2 sm:mx-9 font-playfair text-base sm:text-xl">
+                      <p className="mb-3"> {formatDate(transactions.createdAt)}</p>
+                      <p>{transactions.status}</p>
+                      <p>${transactions.amount}</p>
+                      <p>{transactions.type}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
           </div>
