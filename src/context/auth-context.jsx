@@ -46,18 +46,18 @@ const AuthContextProvider = ({ children }) => {
         } catch (error) {
 
           if (error instanceof axios.AxiosError) {
-            console.log('no session =>',error?.response?.data );
+            ('no session =>',error?.response?.data );
            } else {
              toast.error("reg error => ", error);
            }
       //       if (error instanceof axios.AxiosError) {
       //         if (error?.response?.data) {
-      //           console.log("No session => ", error?.response?.data);
+      //           ("No session => ", error?.response?.data);
       // //          setSessionExpired(true); 
       //           setUserData(null)
       //         }
       //         } else {
-      //           console.log("Session error => ", error);
+      //           ("Session error => ", error);
       //         }
       setUserData(null); 
         }

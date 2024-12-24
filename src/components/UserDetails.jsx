@@ -94,8 +94,6 @@ const UserDetails = () => {
         })
 
         setTransaction(response.data.data)
-        console.log(transaction);
-        
         
       } catch (error) {
         if (error instanceof axios.AxiosError) {
@@ -163,7 +161,7 @@ const UserDetails = () => {
       }
     } catch (error) {
       if (error instanceof axios.AxiosError) {
-        console.log("");
+        toast.error("");
       }
       if (error === 404 || error) {
         const errorMessage = error.message;

@@ -52,7 +52,7 @@ const Sidebar = () => {
       }
     } catch (error) {
       if (error instanceof axios.AxiosError) {
-        console.log("");
+        toast.error("");
       }
       if (error === 404 || error) {
         const errorMessage = error.message;
