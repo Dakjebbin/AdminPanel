@@ -21,6 +21,7 @@ const FundUser = () => {
   const { Id } = useParams();
   const [amount, setAmount] = useState(0)
   const [plan, setPlan] = useState('DBA')
+  const [profit, setProfit] = useState(0);
 
   const baseUrl = import.meta.env.VITE_BASEURL;
 
@@ -50,6 +51,53 @@ const FundUser = () => {
     }
     
   }
+
+
+  const handleProfitRequest = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await axios.post(
+        `${baseUrl}/transactions/profits/${Id}`,
+        { profit },
+        { withCredentials: true }
+      );
+  
+      if (response.status === 200) {
+        toast.success("Profit request sent successfully");
+        setProfit(0); 
+      }
+    } catch (error) {
+      if (error.response) {
+        // The server responded with a status code outside of the 2xx range
+        const statusCode = error.response.status;
+  
+        switch (statusCode) {
+          case 400:
+            toast.error("Bad Request: Please check the profit value.");
+            break;
+          case 403:
+            toast.error("Forbidden: You do not have permission to perform this action.");
+            break;
+          case 404:
+            toast.error("Not Found: The requested resource was not found.");
+            break;
+          case 500:
+            toast.error("Server Error: Something went wrong on the server.");
+            break;
+          default:
+            toast.error(`Error: ${error.response.data.message || 'An error occurred'}`);
+        }
+      } else if (error.request) {
+        // The request was made but no response was received
+        toast.error("No response from server. Please try again later.");
+      } else {
+        // Something went wrong while setting up the request
+        toast.error(`Request error: ${error.message}`);
+      }
+    }
+  };
+  
 
   
   useEffect(() => {
@@ -228,10 +276,7 @@ const FundUser = () => {
 
                 <div className="flex items-center gap-2 pt-4 pl-4">
                   <div>
-                    {/* <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" />
-                      <AvatarFallback>WW</AvatarFallback>
-                    </Avatar> */}
+                   
                   </div>
                   <div className="leading-5">
                     <p className="flex items-center mr-3">{userData?.username}</p>
@@ -297,7 +342,7 @@ const FundUser = () => {
                   <div className="mt-7 sm:ml-10 ml-5">
             <button 
             className="bg-[#FFBBB8] px-8 py-2 rounded-lg font-semibold"
-            type="submit">Submit</button>
+            type="submit" >Submit</button>
             </div>
             </form>
 
@@ -305,9 +350,12 @@ const FundUser = () => {
             <h1 className="font-bold text-2xl text-center font-playfair">Add Profit</h1>
 
             <div className="font-semibold text-xl mb-2 mt-9">Amount</div>
-            <form>
+            <form onSubmit={handleProfitRequest}>
             <div>
-              <input className="border-2 w-60 md:w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]"
+              <input
+              value={profit}
+              onChange={(e) => setProfit(e.target.value)}
+              className="border-2 w-60 md:w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]"
               placeholder="$"
               type="number" name="" id="" />
             </div>
