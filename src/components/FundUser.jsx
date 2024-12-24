@@ -277,7 +277,7 @@ const FundUser = () => {
           <div className="font-semibold text-xl mb-2 mt-9">Plan</div>
             <select name="" value={plan}
             onChange={(e) => setPlan(e.target.value)}
-            id="" className="border-black border-2 w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]">
+            id="" className="border-black border-2 w-60 md:w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]">
               <option value="DBA">DBA</option>
               <option value="UBC">UBC</option>
               <option value="Legacy Builders">Legacy Builders</option>
@@ -287,14 +287,14 @@ const FundUser = () => {
 
             <div className="font-semibold text-xl mb-2 mt-9">Amount</div>
             <div>
-              <input className="border-2 w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]"
+              <input className="border-2 w-60 md:w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]"
               placeholder="$"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               type="number" name="" id="" />
             </div>
 
-                  <div className="mt-7 ml-10">
+                  <div className="mt-7 sm:ml-10 ml-5">
             <button 
             className="bg-[#FFBBB8] px-8 py-2 rounded-lg font-semibold"
             type="submit">Submit</button>
@@ -307,13 +307,13 @@ const FundUser = () => {
             <div className="font-semibold text-xl mb-2 mt-9">Amount</div>
             <form>
             <div>
-              <input className="border-2 w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]"
+              <input className="border-2 w-60 md:w-96 py-2 pl-2 font-semibold bg-[#D9D9D9]"
               placeholder="$"
               type="number" name="" id="" />
             </div>
 
             
-            <div className="mt-7 ml-10">
+            <div className="mt-7 sm:ml-10 ml-5">
             <button 
             className="bg-[#FFBBB8] px-8 py-2 rounded-lg font-semibold"
             type="submit">Submit</button>

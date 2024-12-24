@@ -381,23 +381,24 @@ const formatDate = (timestamp) => {
                 <p>Profit: - ${userDetails.profit}</p>
             </div>
 
-            <div className="flex justify-between ml-6 mr-8 mt-10">
+            <div className="flex justify-between ml-2 sm:ml-6 mr-8 mt-10">
             <label>Approve User</label>
             <label>Update User Status</label>
             </div>
-            <div className="flex justify-between mx-6">
+            <div className="flex justify-between mx-2 sm:mx-6">
                
                 <div>
                 <select name="" value={isApproved}
                 onChange={handleSelectChange}
                 id=""
-                 className="border px-4 py-2  rounded-md font-semibold text-xl">
+                 className="border sm:px-4 py-2 rounded-md font-semibold text-xl">
                     <option value="Approved" className="font-semibold" >Approved</option>
                     <option value="Not Approved">Not Approved</option>
                 </select>
 
                 <div>
-                    <button onClick={handleApprovedStatus} className="bg-[#14AE5C] px-5 py-2 mt-5 font-playfair font-semibold rounded-lg">Update</button>
+                    <button onClick={handleApprovedStatus} className="bg-[#14AE5C] px-5 py-2 mt-5 
+                    font-playfair font-semibold rounded-lg">Update</button>
                 </div>
                 </div>
 
